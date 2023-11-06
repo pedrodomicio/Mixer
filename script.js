@@ -1,4 +1,22 @@
-// JavaScript code remains the same.
+function playAllAudio() {
+    var audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(function (audio) {
+        audio.play();
+    });
+}
+
+function stopAllAudio() {
+    var audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(function (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+}
+
+function setVolume(audioId, volume) {
+    var audio = document.getElementById(audioId);
+    audio.volume = volume;
+}
 
 function updateLabels() {
     var audioElements = document.querySelectorAll('audio');
