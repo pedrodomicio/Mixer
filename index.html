@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Audio Player</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+        }
+
+        .volume-label {
+            font-weight: bold;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="control-group">
+        <label class="volume-label" id="label1"></label>
+        <input type="range" id="volume1" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio1', this.value)">
+    </div>
+
+    <div class="control-group">
+        <label class="volume-label" id="label2"></label>
+        <input type="range" id="volume2" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio2', this.value)">
+    </div>
+
+    <div class="control-group">
+        <label class="volume-label" id="label3"></label>
+        <input type="range" id="volume3" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio3', this.value)">
+    </div>
+
+    <div class="control-group">
+        <label class="volume-label" id="label4"></label>
+        <input type="range" id="volume4" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio4', this.value)">
+    </div>
+
+    <div class="control-group">
+        <label class="volume-label" id="label5"></label>
+        <input type="range" id="volume5" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio5', this.value)">
+    </div>
+
+    <button onclick="playAllAudio()">Play All</button>
+    <button onclick="stopAllAudio()">Stop All</button>
+
+    <audio id="audio1" src="aviao Arppegio 1.wav" preload="auto"></audio>
+    <audio id="audio2" src="aviao Arppegio 2.wav" preload="auto"></audio>
+    <audio id="audio3" src="aviao Bass.wav" preload="auto"></audio>
+    <audio id="audio4" src="aviao Drums.wav" preload="auto"></audio>
+    <audio id="audio5" src="aviao Organ.wav" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
