@@ -1,3 +1,36 @@
+const audioElements = [
+    document.getElementById('audio1'),
+    document.getElementById('audio2'),
+    document.getElementById('audio3'),
+    document.getElementById('audio4'),
+    document.getElementById('audio5')
+];
+let soloed = [];
+
+function toggleMute(audioId) {
+    const audio = document.getElementById(audioId);
+    audio.muted = !audio.muted;
+}
+
+function toggleSolo(audioId) {
+    const audio = document.getElementById(audioId);
+    if (soloed.includes(audioId)) {
+        // Toggle off solo
+        soloed = soloed.filter((id) => id !== audioId);
+        audioElements.forEach((element) => {
+            element.muted = false;
+        });
+    } else {
+        // Toggle on solo
+        soloed = [audioId];
+        audioElements.forEach((element) => {
+            if (element.id !== audioId) {
+                element.muted = true;
+            }
+        });
+    }
+}
+
 function playAllAudio() {
     var audioElements = document.querySelectorAll('audio');
     audioElements.forEach(function (audio) {
