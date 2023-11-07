@@ -1,3 +1,8 @@
+function setVolume(audioId, volume) {
+    const audio = document.getElementById(audioId);
+    audio.volume = volume;
+}
+
 const audioElements = document.querySelectorAll('audio');
 
 let isPlaying = false; // Add a variable to track if audio is playing
@@ -58,8 +63,8 @@ function toggleMute(audioId) {
     audio.muted = !audio.muted;
     const muteButton = document.getElementById('muteButton' + audioId.charAt(audioId.length - 1));
     muteButton.classList.toggle('active', audio.muted);
+    console.log(`Toggled mute for audio ${audioId}. Muted: ${audio.muted}`);
 }
-
 
 function playAllAudio() {
     const playAllButton = document.getElementById('playAllButton');
@@ -69,6 +74,8 @@ function playAllAudio() {
     audioElements.forEach(function (audio) {
         audio.play();
     });
+    isPlaying = true;
+    console.log('All audio played.');
 }
 
 // Add a function to stop all audio
@@ -81,6 +88,7 @@ function stopAllAudio() {
         audio.pause();
         audio.currentTime = 0;
     });
+    console.log('All audio stopped.');
 }
 
 // Add an event listener to the stop button
@@ -89,6 +97,7 @@ stopAllButton.addEventListener('click', function () {
     if (isPlaying) { // Check if audio is playing
         stopAllAudio();
     }
+    console.log('Stop button clicked.');
 });
 
 // Add an event listener to handle audio play
@@ -99,13 +108,31 @@ audioElements.forEach((audio) => {
         }
     });
     audio.load(); // Start loading the audio
+    console.log(`Audio element ${audio.id} loaded.`);
 });
 
-
-function setVolume(audioId, volume) {
+// Add a function to update the volume when the input changes (for both mouse and touch events)
+function updateVolume(audioId) {
     const audio = document.getElementById(audioId);
-    audio.volume = volume;
-};
+    const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
+    audio.volume = volumeInput.value;
+    console.log(`Updated volume for audio ${audioId}. New volume: ${volumeInput.value}`);
+}
+
+// Attach event listeners for both mouse and touch events
+audioElements.forEach((audio) => {
+    const audioId = audio.id;
+    const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
+
+    volumeInput.addEventListener('input', () => {
+        updateVolume(audioId);
+    });
+
+    volumeInput.addEventListener('touchstart', () => {
+        updateVolume(audioId);
+    });
+    console.log(`Volume control attached for audio ${audioId}`);
+});
 
 function updateLabels() {
     var audioElements = document.querySelectorAll('audio');
@@ -116,6 +143,7 @@ function updateLabels() {
         var label = labels[i];
         label.textContent = decodeURIComponent(getFileName(audio.src));
     }
+    console.log('Updated volume labels.');
 }
 
 function getFileName(src) {
