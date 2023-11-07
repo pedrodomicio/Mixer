@@ -111,25 +111,23 @@ audioElements.forEach((audio) => {
     console.log(`Audio element ${audio.id} loaded.`);
 });
 
-// Add a function to update the volume when the input changes (for both mouse and touch events)
-function updateVolume(audioId) {
+// Function to set the custom volume
+function setCustomVolume(audioId, volume) {
     const audio = document.getElementById(audioId);
-    const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
-    audio.volume = volumeInput.value;
-    console.log(`Updated volume for audio ${audioId}. New volume: ${volumeInput.value}`);
+    audio.volume = volume;
 }
 
-// Attach event listeners for both mouse and touch events
+// Attach event listeners for both mouse and touch events to use the custom volume control
 audioElements.forEach((audio) => {
     const audioId = audio.id;
     const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
 
     volumeInput.addEventListener('input', () => {
-        updateVolume(audioId);
+        setCustomVolume(audioId, volumeInput.value);
     });
 
     volumeInput.addEventListener('touchstart', () => {
-        updateVolume(audioId);
+        setCustomVolume(audioId, volumeInput.value);
     });
     console.log(`Volume control attached for audio ${audioId}`);
 });
