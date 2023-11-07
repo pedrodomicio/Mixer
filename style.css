@@ -43,7 +43,7 @@ body {
 }
 
 input[type="range"] {
-    height: 60%; /* Set the height relative to the parent element */
+    margin-bottom: 10vh;
     transform: rotate(-90deg);
 }
 
