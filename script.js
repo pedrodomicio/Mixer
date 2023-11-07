@@ -103,7 +103,7 @@ audioElements.forEach((audio) => {
 
 
 // Add a function to update the volume when the input changes (for both mouse and touch events)
-function updateVolume(audioId) {
+function setVolume(audioId) {
     const audio = document.getElementById(audioId);
     const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
     audio.volume = volumeInput.value;
@@ -115,11 +115,11 @@ audioElements.forEach((audio) => {
     const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
 
     volumeInput.addEventListener('input', () => {
-        updateVolume(audioId);
+        setVolume(audioId);
     });
 
     volumeInput.addEventListener('touchstart', () => {
-        updateVolume(audioId);
+        setVolume(audioId);
     });
 });
 
