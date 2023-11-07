@@ -130,17 +130,6 @@
     <audio id="audio4" src="aviao Drums.wav" preload="auto"></audio>
     <audio id="audio5" src="aviao Organ.wav" preload="auto"></audio>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then((registration) => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
-                .catch((error) => {
-                    console.error('Service Worker registration failed:', error);
-                });
-        }
-    </script>    
     <script src="script.js"></script>
 </body>
 </html>
