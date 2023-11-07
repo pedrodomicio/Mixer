@@ -1,10 +1,7 @@
-const audioElements = [
-    document.getElementById('audio1'),
-    document.getElementById('audio2'),
-    document.getElementById('audio3'),
-    document.getElementById('audio4'),
-    document.getElementById('audio5')
-];
+const audioElements = document.querySelectorAll('audio');
+
+let isPlaying = false; // Add a variable to track if audio is playing
+
 let soloed = [];
 
 function toggleSolo(audioId) {
@@ -74,16 +71,35 @@ function playAllAudio() {
     });
 }
 
+// Add a function to stop all audio
 function stopAllAudio() {
     const playAllButton = document.getElementById('playAllButton');
     playAllButton.classList.remove('active');
+    isPlaying = false; // Set isPlaying to false
     
-    var audioElements = document.querySelectorAll('audio');
     audioElements.forEach(function (audio) {
         audio.pause();
         audio.currentTime = 0;
     });
 }
+
+// Add an event listener to the stop button
+const stopAllButton = document.getElementById('stopAllButton');
+stopAllButton.addEventListener('click', function () {
+    if (isPlaying) { // Check if audio is playing
+        stopAllAudio();
+    }
+});
+
+// Add an event listener to handle audio play
+audioElements.forEach((audio) => {
+    audio.addEventListener('canplay', () => {
+        if (isPlaying) { // Check if audio is supposed to be playing
+            audio.play();
+        }
+    });
+    audio.load(); // Start loading the audio
+});
 
 function setVolume(audioId, volume) {
     var audio = document.getElementById(audioId);
