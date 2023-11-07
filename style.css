@@ -1,0 +1,82 @@
+body {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 1.2vw; /* Set the font size relative to the viewport width */
+}
+
+.mixing-console {
+    background-color: #222;
+    border: 2px solid #444;
+    border-radius: 10px;
+    padding: 2vw; /* Set padding relative to the viewport width */
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    max-width: 80%; /* Set a maximum width as a percentage of the viewport width */
+    height: 50%;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: hidden; /* Hide horizontal scrollbar */
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1%;
+    border: 2px solid #444;
+    border-radius: 5px;
+    padding: 10px; /* Adjust padding */
+    max-width: 100%; /* Set maximum width to 100% */
+    min-width: 10px;
+}
+
+.volume-label {
+    font-weight: bold;
+    color: #fff;
+    margin:auto;
+    ce
+}
+
+input[type="range"] {
+    height: 60%; /* Set the height relative to the parent element */
+    transform: rotate(-90deg);
+}
+
+button {
+    padding: 8px; /* Reduce padding to make buttons smaller */
+    margin: 2px;
+    font-size: 14px; /* Reduce font size for buttons */
+    background-color: #3f3f3f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 4vh;
+    width: 4vh;}
+
+button.active {
+    background-color: #b9ad00; /* Change the background color for active buttons */
+}
+
+button:hover {
+    background-color: rgb(174, 157, 75);
+}
+
+#playAllButton {
+    height: 7vh;
+    width: 7vh;
+    align-content: center;
+    margin-left: 2vh;
+}
+
+#stopAllButton {
+    height: 7vh;
+    width: 7vh;
+    align-content: center;
+    margin-left: 2vh;
+}
