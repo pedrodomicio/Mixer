@@ -1,121 +1,43 @@
 <head>
+    <meta charset="UTF-8">
     <title>Audio Mixing Console</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .mixing-console {
-            background-color: #222;
-            border: 2px solid #444;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: row;
-        }
-
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 10px;
-        }
-
-        .volume-label {
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        input[type="range"] {
-            width: 40px;
-            height: 150px;
-            transform: rotate(-90deg);
-            margin-bottom: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #3f3f3f;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button.active {
-            background-color: #b9ad00; /* Change the background color for active buttons */
-        }
-
-        button:hover {
-            background-color: rgb(174, 157, 75);
-        }
-
-        /* Responsive Styles for Mobile Devices */
-        @media (max-width: 768px) {
-            body {
-                height: auto;
-            }
-
-            .mixing-console {
-                flex-direction: column;
-            }
-
-            .control-group {
-                margin: 10px 0;
-            }
-
-            input[type="range"] {
-                transform: none;
-                width: 100%;
-                height: 40px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">  
 </head>
 <body>
     <div class="mixing-console">
         <div class="control-group">
             <label class="volume-label" id="label1"></label>
-            <input type="range" id="volume1" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio1', this.value)">
+            <input type="range" id="volume1" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio1', this.value)">
             <button onclick="toggleMute('audio1')" id="muteButton1"><i class="fas fa-volume-mute"></i></button>
             <button onclick="toggleSolo('audio1')" id="soloButton1"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label2"></label>
-            <input type="range" id="volume2" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio2', this.value)">
+            <input type="range" id="volume2" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio2', this.value)">
             <button onclick="toggleMute('audio2')" id="muteButton2"><i class="fas fa-volume-mute"></i></button>
             <button onclick="toggleSolo('audio2')" id="soloButton2"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label3"></label>
-            <input type="range" id="volume3" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio3', this.value)">
+            <input type="range" id="volume3" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio3', this.value)">
             <button onclick="toggleMute('audio3')" id="muteButton3"><i class="fas fa-volume-mute"></i></button>
             <button onclick="toggleSolo('audio3')" id="soloButton3"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label4"></label>
-            <input type="range" id="volume4" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio4', this.value)">
+            <input type="range" id="volume4" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio4', this.value)">
             <button onclick="toggleMute('audio4')" id="muteButton4"><i class="fas fa-volume-mute"></i></button>
             <button onclick="toggleSolo('audio4')" id="soloButton4"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label5"></label>
-            <input type="range" id="volume5" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio5', this.value)">
+            <input type="range" id="volume5" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio5', this.value)">
             <button onclick="toggleMute('audio5')" id="muteButton5"><i class="fas fa-volume-mute"></i></button>
             <button onclick="toggleSolo('audio5')" id="soloButton5"><i class="fas fa-microphone"></i></button>
         </div>
@@ -124,11 +46,11 @@
         <button onclick="stopAllAudio()" id="stopAllButton"><i class="fas fa-stop"></i></button>
     </div>
 
-    <audio id="audio1" src="aviao Arppegio 1.wav" preload="auto"></audio>
-    <audio id="audio2" src="aviao Arppegio 2.wav" preload="auto"></audio>
-    <audio id="audio3" src="aviao Bass.wav" preload="auto"></audio>
-    <audio id="audio4" src="aviao Drums.wav" preload="auto"></audio>
-    <audio id="audio5" src="aviao Organ.wav" preload="auto"></audio>
+    <audio id="audio1" src="Aviao Arpeggio 1.m4a" preload="auto"></audio>
+    <audio id="audio2" src="Aviao Arpeggio 2.m4a" preload="auto"></audio>
+    <audio id="audio3" src="Aviao Bass.m4a" preload="auto"></audio>
+    <audio id="audio4" src="Aviao Drums.m4a" preload="auto"></audio>
+    <audio id="audio5" src="Aviao Organ.m4a" preload="auto"></audio>
 
     <script src="script.js"></script>
 </body>
