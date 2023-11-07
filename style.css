@@ -38,8 +38,7 @@ body {
 .volume-label {
     font-weight: bold;
     color: #fff;
-    margin:auto;
-    ce
+    margin: auto;
 }
 
 input[type="range"] {
