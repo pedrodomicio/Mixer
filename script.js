@@ -1,10 +1,10 @@
-const audioElements = [
-    document.getElementById('audio1'),
-    document.getElementById('audio2'),
-    document.getElementById('audio3'),
-    document.getElementById('audio4'),
-    document.getElementById('audio5')
-];
+const audioElements = document.querySelectorAll('audio');
+audioElements.forEach((audio) => {
+    audio.addEventListener('canplay', () => {
+        audio.play();
+    });
+    audio.load(); // Start loading the audio
+});
 let soloed = [];
 
 function toggleSolo(audioId) {
