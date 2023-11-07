@@ -101,10 +101,27 @@ audioElements.forEach((audio) => {
     audio.load(); // Start loading the audio
 });
 
-function setVolume(audioId, volume) {
-    var audio = document.getElementById(audioId);
-    audio.volume = volume;
+
+// Add a function to update the volume when the input changes (for both mouse and touch events)
+function updateVolume(audioId) {
+    const audio = document.getElementById(audioId);
+    const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
+    audio.volume = volumeInput.value;
 }
+
+// Attach event listeners for both mouse and touch events
+audioElements.forEach((audio) => {
+    const audioId = audio.id;
+    const volumeInput = document.getElementById('volume' + audioId.charAt(audioId.length - 1));
+
+    volumeInput.addEventListener('input', () => {
+        updateVolume(audioId);
+    });
+
+    volumeInput.addEventListener('touchstart', () => {
+        updateVolume(audioId);
+    });
+});
 
 function updateLabels() {
     var audioElements = document.querySelectorAll('audio');
