@@ -1,8 +1,3 @@
-function setVolume(audioId, volume) {
-    const audio = document.getElementById(audioId);
-    audio.volume = volume;
-}
-
 const audioElements = document.querySelectorAll('audio');
 
 let isPlaying = false; // Add a variable to track if audio is playing
@@ -91,15 +86,6 @@ function stopAllAudio() {
     console.log('All audio stopped.');
 }
 
-// Add an event listener to the stop button
-const stopAllButton = document.getElementById('stopAllButton');
-stopAllButton.addEventListener('click', function () {
-    if (isPlaying) { // Check if audio is playing
-        stopAllAudio();
-    }
-    console.log('Stop button clicked.');
-});
-
 // Add an event listener to handle audio play
 audioElements.forEach((audio) => {
     audio.addEventListener('canplay', () => {
@@ -133,6 +119,7 @@ audioElements.forEach((audio) => {
 });
 
 function updateLabels() {
+    console.log('Updating labels...'); // Add this line for debugging
     var audioElements = document.querySelectorAll('audio');
     var labels = document.querySelectorAll('.volume-label');
     
