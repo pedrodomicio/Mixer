@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html>
 <head>
     <title>Audio Mixing Console</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
         body {
             background-color: #333;
@@ -54,8 +53,12 @@
             cursor: pointer;
         }
 
+        button.active {
+            background-color: #b9ad00; /* Change the background color for active buttons */
+        }
+
         button:hover {
-            background-color: #555;
+            background-color: rgb(174, 157, 75);
         }
 
         /* Responsive Styles for Mobile Devices */
@@ -85,40 +88,40 @@
         <div class="control-group">
             <label class="volume-label" id="label1"></label>
             <input type="range" id="volume1" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio1', this.value)">
-            <button onclick="toggleMute('audio1')">Mute</button>
-            <button onclick="toggleSolo('audio1')">Solo</button>
+            <button onclick="toggleMute('audio1')" id="muteButton1"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo('audio1')" id="soloButton1"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label2"></label>
             <input type="range" id="volume2" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio2', this.value)">
-            <button onclick="toggleMute('audio2')">Mute</button>
-            <button onclick="toggleSolo('audio2')">Solo</button>
+            <button onclick="toggleMute('audio2')" id="muteButton2"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo('audio2')" id="soloButton2"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label3"></label>
             <input type="range" id="volume3" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio3', this.value)">
-            <button onclick="toggleMute('audio3')">Mute</button>
-            <button onclick="toggleSolo('audio3')">Solo</button>
+            <button onclick="toggleMute('audio3')" id="muteButton3"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo('audio3')" id="soloButton3"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label4"></label>
             <input type="range" id="volume4" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio4', this.value)">
-            <button onclick="toggleMute('audio4')">Mute</button>
-            <button onclick="toggleSolo('audio4')">Solo</button>
+            <button onclick="toggleMute('audio4')" id="muteButton4"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo('audio4')" id="soloButton4"><i class="fas fa-microphone"></i></button>
         </div>
 
         <div class="control-group">
             <label class="volume-label" id="label5"></label>
             <input type="range" id="volume5" min="0" max="1" step="0.1" value="1" oninput="setVolume('audio5', this.value)">
-            <button onclick="toggleMute('audio5')">Mute</button>
-            <button onclick="toggleSolo('audio5')">Solo</button>
+            <button onclick="toggleMute('audio5')" id="muteButton5"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo('audio5')" id="soloButton5"><i class="fas fa-microphone"></i></button>
         </div>
 
-        <button onclick="playAllAudio()">Play All</button>
-        <button onclick="stopAllAudio()">Stop All</button>
+        <button onclick="playAllAudio()" id="playAllButton"><i class="fas fa-play"></i></button>
+        <button onclick="stopAllAudio()" id="stopAllButton"><i class="fas fa-stop"></i></button>
     </div>
 
     <audio id="audio1" src="aviao Arppegio 1.wav" preload="auto"></audio>
@@ -127,6 +130,17 @@
     <audio id="audio4" src="aviao Drums.wav" preload="auto"></audio>
     <audio id="audio5" src="aviao Organ.wav" preload="auto"></audio>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>    
     <script src="script.js"></script>
 </body>
 </html>

@@ -7,31 +7,67 @@ const audioElements = [
 ];
 let soloed = [];
 
-function toggleMute(audioId) {
-    const audio = document.getElementById(audioId);
-    audio.muted = !audio.muted;
-}
-
 function toggleSolo(audioId) {
     const audio = document.getElementById(audioId);
+    const soloButton = document.getElementById('soloButton' + audioId.charAt(audioId.length - 1));
+
     if (soloed.includes(audioId)) {
-        // Toggle off solo
+        // Toggle off solo for the current track
         soloed = soloed.filter((id) => id !== audioId);
-        audioElements.forEach((element) => {
-            element.muted = false;
-        });
+        audio.muted = false;
+        soloButton.classList.remove('active');
+        
+        if (soloed.length === 0) {
+            // If there are no other soloed tracks, unmute all tracks
+            audioElements.forEach((element) => {
+                element.muted = false;
+                const muteButton = document.getElementById('muteButton' + element.id.charAt(element.id.length - 1));
+                muteButton.classList.remove('active');
+            });
+        } else {
+            // Mute only non-soloed tracks
+            audioElements.forEach((element) => {
+                const muteButton = document.getElementById('muteButton' + element.id.charAt(element.id.length - 1));
+                if (!soloed.includes(element.id)) {
+                    element.muted = true;
+                    muteButton.classList.add('active');
+                } else {
+                    element.muted = false;
+                    muteButton.classList.remove('active');
+                }
+            });
+        }
     } else {
-        // Toggle on solo
-        soloed = [audioId];
+        // Toggle on solo for the current track
+        soloed.push(audioId);
+        soloButton.classList.add('active');
+
+        // Mute only non-soloed tracks
         audioElements.forEach((element) => {
-            if (element.id !== audioId) {
+            const muteButton = document.getElementById('muteButton' + element.id.charAt(element.id.length - 1));
+            if (!soloed.includes(element.id)) {
                 element.muted = true;
+                muteButton.classList.add('active');
+            } else {
+                element.muted = false;
+                muteButton.classList.remove('active');
             }
         });
     }
 }
 
+function toggleMute(audioId) {
+    const audio = document.getElementById(audioId);
+    audio.muted = !audio.muted;
+    const muteButton = document.getElementById('muteButton' + audioId.charAt(audioId.length - 1));
+    muteButton.classList.toggle('active', audio.muted);
+}
+
+
 function playAllAudio() {
+    const playAllButton = document.getElementById('playAllButton');
+    playAllButton.classList.add('active');
+
     var audioElements = document.querySelectorAll('audio');
     audioElements.forEach(function (audio) {
         audio.play();
@@ -39,6 +75,9 @@ function playAllAudio() {
 }
 
 function stopAllAudio() {
+    const playAllButton = document.getElementById('playAllButton');
+    playAllButton.classList.remove('active');
+    
     var audioElements = document.querySelectorAll('audio');
     audioElements.forEach(function (audio) {
         audio.pause();
