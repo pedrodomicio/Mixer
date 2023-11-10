@@ -7,6 +7,8 @@ body {
     height: 100vh;
     margin: 0;
     font-size: 1.2vw; /* Set the font size relative to the viewport width */
+    overflow: hidden; /* Disable vertical scrollbar */
+    touch-action: manipulation; /* Disable pinch-to-zoom */
 }
 
 .mixing-console {

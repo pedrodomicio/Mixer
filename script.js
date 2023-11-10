@@ -40,11 +40,6 @@ function initializeAudioTracks(audioContext) {
     });
 }
 
-document.getElementById('startAudioButton').addEventListener('click', () => {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    initializeAudioTracks(audioContext);
-});
-
 // Function to update the volume for a specific track
 function setCustomVolume(trackIndex, volume) {
     if (soundObjects[trackIndex]) {
@@ -83,7 +78,7 @@ const soloedTracks = [];
 // Function to toggle solo for a track
 function toggleSolo(trackIndex, button) {
     const isSoloed = soloedTracks.includes(trackIndex);
-  
+
     // If the track is already soloed, unsolo it
     if (isSoloed) {
         const index = soloedTracks.indexOf(trackIndex);
@@ -94,7 +89,7 @@ function toggleSolo(trackIndex, button) {
         // If the track is not soloed, solo it and add to the soloedTracks array
         soloedTracks.push(trackIndex);
     }
-  
+
     // Update the volume for all tracks based on the solo state
     soundObjects.forEach((sound, index) => {
         if (soloedTracks.length === 0) {
@@ -113,11 +108,8 @@ function toggleSolo(trackIndex, button) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const startAudioButton = document.getElementById('startAudioButton');
-    startAudioButton.addEventListener('click', () => {
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        initializeAudioTracks(audioContext);
-    });
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    initializeAudioTracks(audioContext);
 
     // Add your HTML and control elements here
 
@@ -144,6 +136,8 @@ function updateLabels() {
     const labels = document.querySelectorAll('.volume-label');
 
     labels.forEach((label, index) => {
-        label.textContent = audioTracks[index].src;
+        // Get the file name without the path and file extension
+        const fileName = audioTracks[index].src.split('/').pop().split('.').slice(0, -1).join('.');
+        label.textContent = fileName;
     });
 }
