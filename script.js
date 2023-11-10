@@ -28,6 +28,12 @@ const audioTracks = [
 
 const soundObjects = [];
 
+// Create an audio element for silent playback
+const silentAudio = new Audio();
+silentAudio.src = 'audio/silencio.m4a';
+silentAudio.loop = true;
+silentAudio.play();
+
 function initializeAudioTracks(audioContext) {
     audioTracks.forEach((track, index) => {
         soundObjects[index] = new Howl({

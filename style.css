@@ -72,12 +72,12 @@ button:hover {
     height: 7vh;
     width: 7vh;
     align-content: center;
-    margin-left: 2vh;
+    margin: 1vh;
 }
 
 #stopAllButton {
     height: 7vh;
     width: 7vh;
     align-content: center;
-    margin-left: 2vh;
+    margin: 1vh;
 }
