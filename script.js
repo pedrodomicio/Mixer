@@ -1,26 +1,26 @@
 const audioTracks = [
     {
-        src: 'http://localhost:8080/Aviao%20Arpeggio%201.m4a',
+        src: 'audio/Aviao Arpeggio 1.m4a',
         volume: 1.0,
         loop: true,
     },
     {
-        src: 'http://localhost:8080/Aviao%20Arpeggio%202.m4a',
+        src: 'audio/Aviao Arpeggio 2.m4a',
         volume: 1.0,
         loop: true,
     },
     {
-        src: 'http://localhost:8080/Aviao%20Bass.m4a',
+        src: 'audio/Aviao Bass.m4a',
         volume: 1.0,
         loop: true,
     },
     {
-        src: 'http://localhost:8080/Aviao%20Drums.m4a',
+        src: 'audio/Aviao Drums.m4a',
         volume: 1.0,
         loop: true,
     },
     {
-        src: 'http://localhost:8080/Aviao%20Organ.m4a',
+        src: 'audio/Aviao Organ.m4a',
         volume: 1.0,
         loop: true,
     },
