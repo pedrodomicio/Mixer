@@ -39,9 +39,12 @@
             <button onclick="toggleMute(4, this)" id="muteButton5"><i class="fas fa-volume-mute"></i></button>
             <button onclick="toggleSolo(4, this)" id="soloButton5"><i class="fas fa-microphone"></i></button>
         </div>
-    <button onclick="playAllAudio()" id="playAllButton"><i class="fas fa-play"></i></button>
-    <button onclick="stopAllAudio()" id="stopAllButton"><i class="fas fa-stop"></i></button>
     </div>
+    <div>    
+        <button onclick="playAllAudio()" id="playAllButton"><i class="fas fa-play"></i></button>
+        <button onclick="stopAllAudio()" id="stopAllButton"><i class="fas fa-stop"></i></button>
+    </div>
+    <audio id="silentAudio" preload="auto" src="audio/silencio.m4a" loop muted></audio>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <script src="script.js"></script>
 </body>
