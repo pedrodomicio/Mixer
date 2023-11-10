@@ -1,57 +1,49 @@
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Audio Mixing Console</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="mixing-console">
         <div class="control-group">
             <label class="volume-label" id="label1"></label>
-            <input type="range" id="volume1" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio1', this.value)">
-            <button onclick="toggleMute('audio1')" id="muteButton1"><i class="fas fa-volume-mute"></i></button>
-            <button onclick="toggleSolo('audio1')" id="soloButton1"><i class="fas fa-microphone"></i></button>
+            <input type="range" id="volume1" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume(0, this.value)">
+            <button onclick="toggleMute(0, this)" id="muteButton1"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo(0, this)" id="soloButton1"><i class="fas fa-microphone"></i></button>
         </div>
-
         <div class="control-group">
             <label class="volume-label" id="label2"></label>
-            <input type="range" id="volume2" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio2', this.value)">
-            <button onclick="toggleMute('audio2')" id="muteButton2"><i class="fas fa-volume-mute"></i></button>
-            <button onclick="toggleSolo('audio2')" id="soloButton2"><i class="fas fa-microphone"></i></button>
+            <input type="range" id="volume2" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume(1, this.value)">
+            <button onclick="toggleMute(1, this)" id="muteButton2"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo(1, this)" id="soloButton2"><i class="fas fa-microphone"></i></button>
         </div>
-
         <div class="control-group">
             <label class="volume-label" id="label3"></label>
-            <input type="range" id="volume3" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio3', this.value)">
-            <button onclick="toggleMute('audio3')" id="muteButton3"><i class="fas fa-volume-mute"></i></button>
-            <button onclick="toggleSolo('audio3')" id="soloButton3"><i class="fas fa-microphone"></i></button>
+            <input type="range" id="volume3" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume(2, this.value)">
+            <button onclick="toggleMute(2, this)" id="muteButton3"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo(2, this)" id="soloButton3"><i class="fas fa-microphone"></i></button>
         </div>
-
         <div class="control-group">
             <label class="volume-label" id="label4"></label>
-            <input type="range" id="volume4" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio4', this.value)">
-            <button onclick="toggleMute('audio4')" id="muteButton4"><i class="fas fa-volume-mute"></i></button>
-            <button onclick="toggleSolo('audio4')" id="soloButton4"><i class="fas fa-microphone"></i></button>
+            <input type="range" id="volume4" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume(3, this.value)">
+            <button onclick="toggleMute(3, this)" id="muteButton4"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo(3, this)" id="soloButton4"><i class="fas fa-microphone"></i></button>
         </div>
-
         <div class="control-group">
             <label class="volume-label" id="label5"></label>
-            <input type="range" id="volume5" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume('audio5', this.value)">
-            <button onclick="toggleMute('audio5')" id="muteButton5"><i class="fas fa-volume-mute"></i></button>
-            <button onclick="toggleSolo('audio5')" id="soloButton5"><i class="fas fa-microphone"></i></button>
+            <input type="range" id="volume5" min="0" max="1" step="0.1" value="1" oninput="setCustomVolume(4, this.value)">
+            <button onclick="toggleMute(4, this)" id="muteButton5"><i class="fas fa-volume-mute"></i></button>
+            <button onclick="toggleSolo(4, this)" id="soloButton5"><i class="fas fa-microphone"></i></button>
         </div>
-
-        <button onclick="playAllAudio()" id="playAllButton"><i class="fas fa-play"></i></button>
-        <button onclick="stopAllAudio()" id="stopAllButton"><i class="fas fa-stop"></i></button>
+    <button id="startAudioButton">Start Audio</button>
+    <button onclick="playAllAudio()" id="playAllButton"><i class="fas fa-play"></i></button>
+    <button onclick="stopAllAudio()" id="stopAllButton"><i class="fas fa-stop"></i></button>
     </div>
-
-    <audio id="audio1" src="Aviao Arpeggio 1.m4a" preload="auto"></audio>
-    <audio id="audio2" src="Aviao Arpeggio 2.m4a" preload="auto"></audio>
-    <audio id="audio3" src="Aviao Bass.m4a" preload="auto"></audio>
-    <audio id="audio4" src="Aviao Drums.m4a" preload="auto"></audio>
-    <audio id="audio5" src="Aviao Organ.m4a" preload="auto"></audio>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
