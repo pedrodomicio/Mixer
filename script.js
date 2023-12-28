@@ -147,3 +147,20 @@ function updateLabels() {
         label.textContent = fileName;
     });
 }
+
+function adjustImageSize() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 500) {
+        // If the screen size is less than 500px, resize the image to 80% of the screen width
+        const newWidth = screenWidth * 0.8;
+        document.getElementById('songCover').style.width = `${newWidth}px`;
+    } else {
+        // If the screen size is 500px or larger, set the fixed width to 500px
+        document.getElementById('songCover').style.width = '500px';
+    }
+}
+
+// Call the function on page load and window resize
+document.addEventListener('DOMContentLoaded', adjustImageSize);
+window.addEventListener('resize', adjustImageSize);
